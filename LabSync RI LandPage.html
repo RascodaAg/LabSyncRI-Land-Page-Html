@@ -1,0 +1,998 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LabSync RI - Revenue Intelligence for Dental Labs</title>
+<meta name="description" content="Maximize revenue and save production time with LabSync RI. The first dental lab management system built for revenue intelligence.">
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<!-- Iconify -->
+<script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com"></script>
+<!-- Tailwind Config -->
+<script>
+tailwind.config = {
+theme: {
+extend: {
+fontFamily: {
+sans: ['Inter', 'sans-serif'],
+serif: ['Instrument Serif', 'serif'],
+},
+colors: {
+background: '#F7F5F3',
+foreground: '#37322F',
+primary: '#37322F',
+muted: '#605A57',
+border: 'rgba(55,50,47,0.12)',
+surface: '#FFFFFF',
+},
+boxShadow: {
+'card': '0px 2px 4px rgba(50,45,43,0.06)',
+'glow': '0 0 20px rgba(55, 50, 47, 0.1)',
+},
+animation: {
+'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
+'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+},
+}
+}
+}
+</script>
+<style>
+body {
+background-color: #F7F5F3;
+color: #37322F;
+-webkit-font-smoothing: antialiased;
+overflow-x: hidden;
+}
+.glass-panel {
+background: rgba(255, 255, 255, 0.7);
+backdrop-filter: blur(12px);
+border: 1px solid rgba(255, 255, 255, 0.5);
+}
+.text-balance {
+text-wrap: balance;
+}
+.reveal-on-scroll {
+opacity: 0;
+transform: translateY(20px);
+filter: blur(5px);
+transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal-on-scroll.is-visible {
+opacity: 1;
+transform: translateY(0);
+filter: blur(0);
+}
+.bg-grid-pattern {
+background-image: linear-gradient(rgba(55, 50, 47, 0.03) 1px, transparent 1px),
+linear-gradient(90deg, rgba(55, 50, 47, 0.03) 1px, transparent 1px);
+background-size: 40px 40px;
+}
+.no-scrollbar::-webkit-scrollbar {
+display: none;
+}
+/* FAQ Accordion Transitions */
+.faq-content {
+transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
+max-height: 0;
+opacity: 0;
+overflow: hidden;
+}
+.faq-icon {
+transition: transform 0.3s ease-in-out;
+}
+/* Interactive Section Animations */
+.fade-in {
+animation: fadeIn 0.4s ease-out forwards;
+}
+@keyframes fadeIn {
+from { opacity: 0; transform: translateY(8px); }
+to { opacity: 1; transform: translateY(0); }
+}
+.progress-bar {
+transition: width 0.1s linear;
+}
+</style>
+</head>
+<body class="font-sans antialiased selection:bg-[#37322F] selection:text-white">
+
+    <!-- Decorative Lines -->
+    <div class="fixed inset-0 pointer-events-none z-0 flex justify-between px-4 sm:px-8 md:px-12 lg:px-0 max-w-[1060px] mx-auto opacity-30">
+        <div class="w-px h-full bg-gradient-to-b from-transparent via-border to-transparent"></div>
+        <div class="w-px h-full bg-gradient-to-b from-transparent via-border to-transparent"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 flex justify-center pt-6 px-4">
+        <div class="glass-panel rounded-full px-5 py-2.5 flex items-center justify-between w-full max-w-3xl shadow-sm">
+            <div class="flex items-center gap-2">
+                <div class="w-8 h-8 bg-[#37322F] rounded-lg flex items-center justify-center text-white">
+                    <iconify-icon icon="solar:tooth-linear" width="20"></iconify-icon>
+                </div>
+                <span class="font-semibold text-sm tracking-tight">LabSync RI</span>
+            </div>
+            
+            <div class="hidden md:flex items-center gap-6 text-xs font-medium text-muted">
+                <a href="#about" class="hover:text-primary transition-colors">About</a>
+                <a href="#features" class="hover:text-primary transition-colors">Features</a>
+                <a href="#testimonials" class="hover:text-primary transition-colors">Testimonials</a>
+            </div>
+
+            <div class="flex items-center gap-3">
+                <a href="#" class="text-xs font-medium hover:text-muted transition-colors hidden sm:block">Log in</a>
+                <a href="#offer" class="bg-[#37322F] text-white text-xs font-medium px-4 py-2 rounded-full hover:bg-black/90 transition-all shadow-lg shadow-black/5 flex items-center gap-1.5">
+                    <span>Book Session</span>
+                    <iconify-icon icon="lucide:arrow-right" width="12"></iconify-icon>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header id="hero" class="relative pt-32 pb-20 md:pt-48 md:pb-24 px-4 overflow-hidden">
+        <div class="max-w-[1060px] mx-auto flex flex-col items-center text-center relative z-10">
+            
+            <div class="reveal-on-scroll mb-6 inline-flex items-center gap-2 px-3 py-1 bg-white border border-border rounded-full shadow-sm">
+                <span class="flex h-2 w-2 rounded-full bg-green-500 animate-pulse"></span>
+                <span class="text-xs font-medium text-muted uppercase tracking-wider">New Revenue Intelligence Model</span>
+            </div>
+
+            <h1 class="reveal-on-scroll text-5xl md:text-7xl lg:text-8xl font-serif text-primary leading-[1] md:leading-[0.95] tracking-tight mb-8 text-balance">
+                Increase Revenue <br>
+                <span class="italic text-muted/60">Up To 40%</span>
+            </h1>
+
+            <p class="reveal-on-scroll text-lg md:text-xl text-muted max-w-2xl leading-relaxed mb-10 text-balance" style="transition-delay: 100ms;">
+                The first dental lab management system built mainly to maximize revenue through intelligence models that save time, reduce remakes, and eliminate unfortunate events.
+            </p>
+
+            <div class="reveal-on-scroll flex flex-col sm:flex-row items-center gap-4 mb-20" style="transition-delay: 200ms;">
+                <a href="#offer" class="group relative px-8 py-3.5 bg-[#37322F] text-white rounded-full font-medium text-sm overflow-hidden shadow-xl shadow-black/10 transition-transform hover:-translate-y-0.5">
+                    <div class="absolute inset-0 bg-white/10 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
+                    <span class="relative flex items-center gap-2">
+                        Book Onboarding Session
+                        <iconify-icon icon="lucide:calendar-days" width="14"></iconify-icon>
+                    </span>
+                </a>
+            </div>
+
+            <!-- Stats Grid -->
+            <div class="reveal-on-scroll grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-4xl border-t border-b border-border py-8" style="transition-delay: 300ms;">
+                <div class="flex flex-col items-center gap-1 border-b md:border-b-0 md:border-r border-border pb-6 md:pb-0 last:border-0">
+                    <span class="text-4xl md:text-5xl font-serif text-primary">40%</span>
+                    <span class="text-xs font-medium text-muted uppercase tracking-wide">Revenue Increase</span>
+                </div>
+                <div class="flex flex-col items-center gap-1 border-b md:border-b-0 md:border-r border-border pb-6 md:pb-0 last:border-0">
+                    <span class="text-4xl md:text-5xl font-serif text-primary">60%</span>
+                    <span class="text-xs font-medium text-muted uppercase tracking-wide">Reduction in Remakes</span>
+                </div>
+                <div class="flex flex-col items-center gap-1">
+                    <span class="text-4xl md:text-5xl font-serif text-primary">2-3 Days</span>
+                    <span class="text-xs font-medium text-muted uppercase tracking-wide">Faster Turnaround</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Abstract Background Decoration -->
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-to-tr from-gray-200 to-transparent rounded-full blur-[120px] opacity-40 -z-10 pointer-events-none"></div>
+    </header>
+
+    <!-- About Us Section -->
+    <section id="about" class="py-24 bg-white border-t border-border">
+        <div class="max-w-3xl mx-auto px-4">
+            <div class="reveal-on-scroll flex flex-col items-center text-center mb-12">
+                <div class="w-12 h-12 bg-[#37322F] rounded-xl flex items-center justify-center text-white mb-8 shadow-lg">
+                    <iconify-icon icon="solar:tooth-linear" width="28"></iconify-icon>
+                </div>
+                <h2 class="text-3xl md:text-4xl font-serif text-primary mb-6">Built for the Modern Lab</h2>
+            </div>
+            
+            <div class="reveal-on-scroll prose prose-lg prose-neutral mx-auto text-muted/90 space-y-8 leading-relaxed text-center md:text-justify">
+                <p class="text-xl font-medium text-primary">
+                    LabSync RI was built for dental lab owners who are doing good work — yet still feel they aren't making enough revenue to fuel their business.
+                </p>
+                <p>
+                    Most small and mid-sized dental labs don't struggle because of quality or demand. They struggle because of unseen operational losses: remakes, delays, rushed cases, idle machines, and time wasted fixing avoidable mistakes.
+                </p>
+                <div class="bg-[#F7F5F3] p-6 rounded-xl border border-border my-8">
+                    <p class="italic text-center m-0 text-primary font-medium">
+                        "These losses don't show up clearly in reports. They happen quietly, case by case, every single day."
+                    </p>
+                </div>
+                <p>
+                    LabSync RI is the first dental lab management system built around Revenue Intelligence. Instead of just managing orders, we track where money is lost while work is still in progress — in real time.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Features Section -->
+    <section id="features" class="py-24 px-4 bg-[#F7F5F3] relative border-t border-border">
+        <div class="bg-grid-pattern absolute inset-0 opacity-50 pointer-events-none"></div>
+        <div class="max-w-[1060px] mx-auto relative z-10">
+            
+            <!-- Header -->
+            <div class="text-center max-w-3xl mx-auto mb-16 reveal-on-scroll">
+                <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-border bg-white shadow-sm mb-6">
+                    <div class="w-2 h-2 rounded-full bg-primary animate-pulse"></div>
+                    <span class="text-xs font-medium text-primary uppercase tracking-wide">Revenue Intelligence Features</span>
+                </div>
+                <h2 class="text-3xl md:text-5xl font-serif text-primary mb-6 leading-tight tracking-tight">
+                    Eliminate pain points, <br> maximize revenue.
+                </h2>
+                <p class="text-lg text-muted text-balance">
+                    A software designed to prevent the problems you deal with every day. Select a category to explore the workflow.
+                </p>
+            </div>
+
+            <!-- Category Tabs (Rendered by JS) -->
+            <div id="category-tabs" class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8 md:mb-12 reveal-on-scroll">
+                <!-- Javascript will inject content here -->
+            </div>
+
+            <!-- Interactive Main Display -->
+            <div id="main-display" class="bg-white rounded-2xl border border-border shadow-xl shadow-black/5 overflow-hidden flex flex-col lg:flex-row h-auto lg:h-[600px] transition-all duration-300 reveal-on-scroll">
+                
+                <!-- Left Column: Feature List -->
+                <div id="feature-list" class="w-full lg:w-[40%] flex flex-col border-b lg:border-b-0 lg:border-r border-border">
+                    <!-- Javascript will inject content here -->
+                </div>
+
+                <!-- Right Column: Visual Area -->
+                <div class="w-full lg:w-[60%] bg-[#F7F5F3] relative overflow-hidden group">
+                    <!-- Screenshot Display -->
+                    <div id="visual-container" class="absolute inset-0">
+                        <!-- Content injected by JS -->
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+     <!-- Features Bento Grid -->
+    <section class="py-24 px-4 bg-[#F7F5F3] relative border-t border-border">
+        <div class="bg-grid-pattern absolute inset-0 opacity-50 pointer-events-none"></div>
+        <div class="max-w-[1060px] mx-auto relative z-10">
+            
+            <div class="text-center max-w-2xl mx-auto mb-20">
+                <h2 class="reveal-on-scroll text-3xl md:text-5xl font-serif text-primary mb-4">Eliminate pain points, maximize revenue</h2>
+                <p class="reveal-on-scroll text-muted">A software designed to prevent the problems you deal with every day.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-6 md:grid-rows-2 gap-6 auto-rows-[minmax(300px,auto)]">
+                
+                <!-- Card 1: Client Portal (Large) -->
+                <div class="reveal-on-scroll md:col-span-4 bg-white border border-border rounded-2xl p-8 overflow-hidden relative group">
+                    <div class="relative z-10">
+                        <div class="w-10 h-10 bg-[#F7F5F3] rounded-full flex items-center justify-center mb-4 shadow-sm border border-border">
+                            <iconify-icon icon="solar:users-group-rounded-linear" width="20"></iconify-icon>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2">Client's Portal</h3>
+                        <p class="text-sm text-muted max-w-sm">Dentists manage cases, upload files, and track status in real-time. 75% fewer errors.</p>
+                    </div>
+                    <!-- UI Mockup -->
+                    <div class="absolute right-0 bottom-0 w-3/4 h-3/4 bg-[#F7F5F3] rounded-tl-2xl shadow-xl border-t border-l border-border p-4 transition-transform group-hover:translate-x-2 group-hover:translate-y-2">
+                        <div class="flex items-center justify-between mb-4 border-b border-gray-200 pb-2">
+                            <div class="text-xs font-semibold">Recent Cases</div>
+                            <div class="text-[10px] text-green-600 bg-green-100 px-2 py-0.5 rounded-full">Live Updates</div>
+                        </div>
+                        <div class="space-y-3">
+                            <div class="flex items-center gap-3">
+                                <div class="w-8 h-8 rounded-full bg-white flex items-center justify-center text-[10px] border border-gray-100">Dr. S</div>
+                                <div class="flex-1">
+                                    <div class="h-2 w-24 bg-gray-200 rounded mb-1"></div>
+                                    <div class="h-1.5 w-16 bg-gray-100 rounded"></div>
+                                </div>
+                                <div class="text-[10px] font-medium text-orange-500">In Prod</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2: Ordering System -->
+                <div class="reveal-on-scroll md:col-span-2 bg-primary text-white rounded-2xl p-8 relative overflow-hidden flex flex-col justify-between group">
+                    <div class="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent pointer-events-none"></div>
+                    <div>
+                        <iconify-icon icon="solar:cart-large-minimalistic-linear" width="24" class="mb-4 text-white/80"></iconify-icon>
+                        <h3 class="text-xl font-semibold mb-2">Seamless Ordering</h3>
+                        <p class="text-xs text-white/60 leading-relaxed">Visual tooth mapping & smart defaults cut setup time by 80%.</p>
+                    </div>
+                    <div class="mt-6 flex justify-center">
+                         <div class="w-full h-24 rounded-lg bg-white/10 backdrop-blur-sm border border-white/10 p-3 grid grid-cols-8 gap-1 items-center">
+                            <div class="col-span-1 h-6 bg-white/20 rounded-sm"></div>
+                            <div class="col-span-1 h-8 bg-white/80 rounded-sm shadow-glow"></div>
+                            <div class="col-span-1 h-6 bg-white/20 rounded-sm"></div>
+                            <div class="col-span-5 h-2 bg-white/10 rounded-full mt-2"></div>
+                         </div>
+                    </div>
+                </div>
+
+                <!-- Card 3: Scan Upload (Vertical) -->
+                <div class="reveal-on-scroll md:col-span-2 md:row-span-1 bg-white border border-border rounded-2xl p-8 overflow-hidden relative">
+                    <div class="absolute top-0 right-0 p-8 opacity-10">
+                        <iconify-icon icon="solar:cloud-upload-linear" width="120"></iconify-icon>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2">Scan Upload Portal</h3>
+                    <p class="text-sm text-muted mb-6">Forces validation before submission. No incomplete data.</p>
+                    <div class="w-full bg-[#F7F5F3] rounded-lg border border-dashed border-border p-4 flex flex-col items-center justify-center text-center gap-2">
+                        <iconify-icon icon="solar:file-check-linear" class="text-green-500" width="24"></iconify-icon>
+                        <span class="text-xs font-medium">STL Files Verified</span>
+                    </div>
+                </div>
+
+                <!-- Card 4: Team Tracking -->
+                <div class="reveal-on-scroll md:col-span-2 bg-white border border-border rounded-2xl p-8 relative overflow-hidden">
+                    <div class="flex items-center gap-2 mb-4">
+                        <div class="w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
+                        <span class="text-xs font-bold uppercase tracking-wide">Live Tracking</span>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2">Team Performance</h3>
+                    <p class="text-sm text-muted">Identify bottlenecks in real-time.</p>
+                    <div class="flex items-end gap-2 h-20 mt-6 pb-2 border-b border-border">
+                        <div class="w-1/5 bg-gray-200 h-[40%] rounded-t-sm"></div>
+                        <div class="w-1/5 bg-gray-200 h-[60%] rounded-t-sm"></div>
+                        <div class="w-1/5 bg-primary h-[85%] rounded-t-sm relative group">
+                            <div class="absolute -top-6 left-1/2 -translate-x-1/2 text-[10px] bg-black text-white px-1.5 py-0.5 rounded opacity-0 group-hover:opacity-100 transition-opacity">94%</div>
+                        </div>
+                        <div class="w-1/5 bg-gray-200 h-[50%] rounded-t-sm"></div>
+                        <div class="w-1/5 bg-gray-200 h-[70%] rounded-t-sm"></div>
+                    </div>
+                </div>
+
+                <!-- Card 5: Inventory -->
+                <div class="reveal-on-scroll md:col-span-2 bg-white border border-border rounded-2xl p-8 relative group">
+                    <div class="absolute right-6 top-6 w-8 h-8 rounded-full bg-orange-50 text-orange-600 flex items-center justify-center">
+                        <iconify-icon icon="solar:box-linear" width="18"></iconify-icon>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2">Inventory Control</h3>
+                    <p class="text-sm text-muted">Track materials case by case. Stop profit leaks.</p>
+                    <div class="mt-6 space-y-2">
+                        <div class="flex items-center justify-between text-xs">
+                            <span class="text-muted">Zirconia Discs</span>
+                            <span class="font-mono">12/50</span>
+                        </div>
+                        <div class="w-full bg-gray-100 h-1.5 rounded-full overflow-hidden">
+                            <div class="bg-orange-500 w-[24%] h-full rounded-full"></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Deep Dive / Value Prop Section -->
+    <section class="py-24 bg-white border-t border-border">
+        <div class="max-w-[1060px] mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center gap-16">
+                <div class="flex-1 reveal-on-scroll">
+                    <div class="inline-block px-3 py-1 bg-[#F7F5F3] border border-border rounded-full text-xs font-medium text-muted mb-6">Data-Driven</div>
+                    <h2 class="text-4xl md:text-5xl font-serif text-primary mb-6 leading-tight">
+                        Clear, Data-Backed <br>
+                        Insight Into Performance
+                    </h2>
+                    <p class="text-lg text-muted mb-8 leading-relaxed">
+                        Running a lab on instinct is expensive. LabSync RI Reports break down your performance into clear, actionable metrics—productivity, efficiency, remakes, and resource usage.
+                    </p>
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-start gap-3 text-sm text-foreground">
+                            <iconify-icon icon="solar:check-circle-bold" class="text-green-600 mt-0.5" width="18"></iconify-icon>
+                            <span>Understand <strong>why</strong> remakes happen, don't just count them.</span>
+                        </li>
+                        <li class="flex items-start gap-3 text-sm text-foreground">
+                            <iconify-icon icon="solar:check-circle-bold" class="text-green-600 mt-0.5" width="18"></iconify-icon>
+                            <span>Automated Billing & Payment Tracking.</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Dashboard Visualization -->
+                <div class="flex-1 w-full reveal-on-scroll">
+                    <div class="relative bg-[#F7F5F3] border border-border rounded-xl shadow-2xl p-6 md:p-8 aspect-square md:aspect-[4/3] flex flex-col">
+                        <!-- Header -->
+                        <div class="flex justify-between items-center mb-8">
+                            <div>
+                                <div class="text-sm font-semibold text-primary">Monthly Revenue</div>
+                                <div class="text-xs text-muted">Oct 2023</div>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-2xl font-serif text-primary">$124,500</div>
+                                <div class="text-[10px] text-green-600 font-medium flex items-center justify-end gap-1">
+                                    <iconify-icon icon="solar:trending-up-linear"></iconify-icon> 12.5%
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Graph Area -->
+                        <div class="flex-1 flex items-end justify-between gap-2 px-2">
+                            <div class="w-full bg-white h-[40%] rounded-t border border-border"></div>
+                            <div class="w-full bg-white h-[65%] rounded-t border border-border"></div>
+                            <div class="w-full bg-white h-[50%] rounded-t border border-border"></div>
+                            <div class="w-full bg-white h-[75%] rounded-t border border-border"></div>
+                            <div class="w-full bg-primary h-[90%] rounded-t shadow-lg shadow-black/20 relative group"><div class="absolute -top-6 left-1/2 -translate-x-1/2 text-[10px] font-bold opacity-100">$90k</div></div>
+                            <div class="w-full bg-white h-[60%] rounded-t border border-border"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="testimonials" class="py-24 bg-[#F7F5F3] border-t border-border">
+        <div class="max-w-[1060px] mx-auto px-4">
+            <h2 class="reveal-on-scroll text-3xl md:text-4xl font-serif text-center mb-16">What Dental Lab Owners Say</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Review 1 -->
+                <div class="reveal-on-scroll flex flex-col p-6 bg-white rounded-xl border border-border shadow-card">
+                    <div class="flex gap-1 text-yellow-500 text-xs mb-4">
+                        <iconify-icon icon="solar:star-bold"></iconify-icon>
+                        <iconify-icon icon="solar:star-bold"></iconify-icon>
+                        <iconify-icon icon="solar:star-bold"></iconify-icon>
+                        <iconify-icon icon="solar:star-bold"></iconify-icon>
+                        <iconify-icon icon="solar:star-bold"></iconify-icon>
+                    </div>
+                    <blockquote class="text-sm leading-relaxed text-foreground flex-1 mb-6">
+                        "LabSync RI transformed how we track profitability. We identified which dentist relationships were actually costing us money. Revenue is up 38%."
+                    </blockquote>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center font-serif text-primary font-bold">JM</div>
+                        <div>
+                            <div class="text-sm font-semibold">James Mitchell</div>
+                            <div class="text-xs text-muted">Owner, TechLab Dental Group</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 2 -->
+                <div class="reveal-on-scroll flex flex-col p-6 bg-white rounded-xl border border-border shadow-card" style="transition-delay: 100ms;">
+                    <div class="flex gap-1 text-yellow-500 text-xs mb-4">
+                        <iconify-icon icon="solar:star-bold"></iconify-icon>
+                        <iconify-icon icon="solar:star-bold"></iconify-icon>
+                        <iconify-icon icon="solar:star-bold"></iconify-icon>
+                        <iconify-icon icon="solar:star-bold"></iconify-icon>
+                        <iconify-icon icon="solar:star-bold"></iconify-icon>
+                    </div>
+                    <blockquote class="text-sm leading-relaxed text-foreground flex-1 mb-6">
+                        "It's like having a business analyst on staff. We've reduced material waste by 52% and our margin on complex cases is now 45% higher."
+                    </blockquote>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center font-serif text-primary font-bold">SR</div>
+                        <div>
+                            <div class="text-sm font-semibold">Sarah Robinson</div>
+                            <div class="text-xs text-muted">Lab Manager, Premier Prosthetic</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 3 -->
+                <div class="reveal-on-scroll flex flex-col p-6 bg-white rounded-xl border border-border shadow-card" style="transition-delay: 200ms;">
+                    <div class="flex gap-1 text-yellow-500 text-xs mb-4">
+                        <iconify-icon icon="solar:star-bold"></iconify-icon>
+                        <iconify-icon icon="solar:star-bold"></iconify-icon>
+                        <iconify-icon icon="solar:star-bold"></iconify-icon>
+                        <iconify-icon icon="solar:star-bold"></iconify-icon>
+                        <iconify-icon icon="solar:star-bold"></iconify-icon>
+                    </div>
+                    <blockquote class="text-sm leading-relaxed text-foreground flex-1 mb-6">
+                        "The dashboard has become our weekly business review. We've improved our net margin by 35% in just 6 months."
+                    </blockquote>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center font-serif text-primary font-bold">MP</div>
+                        <div>
+                            <div class="text-sm font-semibold">Michael Park</div>
+                            <div class="text-xs text-muted">Founder, Precision Dental</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="w-full flex justify-center items-start border-t border-border bg-white">
+        <div class="flex-1 px-4 md:px-12 py-16 md:py-20 flex flex-col lg:flex-row justify-start items-start gap-6 lg:gap-12 max-w-[1060px] mx-auto">
+            <!-- Left Column - Header -->
+            <div class="w-full lg:flex-1 flex flex-col justify-center items-start gap-4 lg:py-5">
+                <div class="w-full flex flex-col justify-center text-[#49423D] font-semibold leading-tight md:leading-[44px] font-sans text-4xl tracking-tight">
+                    Frequently Asked Questions
+                </div>
+                <div class="w-full text-[#605A57] text-base font-normal leading-7 font-sans">
+                    Explore your data, build your dashboard,
+                    <br class="hidden md:block">
+                    bring your team together.
+                </div>
+            </div>
+    
+            <!-- Right Column - FAQ Items -->
+            <div class="w-full lg:flex-1 flex flex-col justify-center items-center">
+                <div class="w-full flex flex-col">
+                    
+                    <!-- FAQ Item 1 -->
+                    <div class="w-full border-b border-[rgba(73,66,61,0.16)] overflow-hidden">
+                        <button onclick="toggleFaq(this)" class="w-full px-5 py-[18px] flex justify-between items-center gap-5 text-left hover:bg-[rgba(73,66,61,0.02)] transition-colors duration-200" aria-expanded="false">
+                            <div class="flex-1 text-[#49423D] text-base font-medium leading-6 font-sans">
+                                What is LabSync RI and who is it for?
+                            </div>
+                            <div class="flex justify-center items-center">
+                                <iconify-icon icon="lucide:chevron-down" class="faq-icon w-6 h-6 text-[rgba(73,66,61,0.60)] transition-transform duration-300 ease-in-out"></iconify-icon>
+                            </div>
+                        </button>
+                        <div class="faq-content">
+                            <div class="px-5 pb-[18px] text-[#605A57] text-sm font-normal leading-6 font-sans">
+                                LabSync RI is a comprehensive revenue intelligence platform designed for dental laboratories that need visibility into their profitability. It's perfect for small and mid-sized labs looking to streamline their case flow and eliminate profit leaks.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- FAQ Item 2 -->
+                    <div class="w-full border-b border-[rgba(73,66,61,0.16)] overflow-hidden">
+                        <button onclick="toggleFaq(this)" class="w-full px-5 py-[18px] flex justify-between items-center gap-5 text-left hover:bg-[rgba(73,66,61,0.02)] transition-colors duration-200" aria-expanded="false">
+                            <div class="flex-1 text-[#49423D] text-base font-medium leading-6 font-sans">
+                                How does Revenue Intelligence work?
+                            </div>
+                            <div class="flex justify-center items-center">
+                                <iconify-icon icon="lucide:chevron-down" class="faq-icon w-6 h-6 text-[rgba(73,66,61,0.60)] transition-transform duration-300 ease-in-out"></iconify-icon>
+                            </div>
+                        </button>
+                        <div class="faq-content">
+                            <div class="px-5 pb-[18px] text-[#605A57] text-sm font-normal leading-6 font-sans">
+                                Our platform automatically tracks the financial impact of every operational step. It calculates the true cost of remakes, idle time, and rush cases, giving you a clear picture of your net margin per case and per client.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- FAQ Item 3 -->
+                    <div class="w-full border-b border-[rgba(73,66,61,0.16)] overflow-hidden">
+                        <button onclick="toggleFaq(this)" class="w-full px-5 py-[18px] flex justify-between items-center gap-5 text-left hover:bg-[rgba(73,66,61,0.02)] transition-colors duration-200" aria-expanded="false">
+                            <div class="flex-1 text-[#49423D] text-base font-medium leading-6 font-sans">
+                                Can I integrate LabSync RI with my existing tools?
+                            </div>
+                            <div class="flex justify-center items-center">
+                                <iconify-icon icon="lucide:chevron-down" class="faq-icon w-6 h-6 text-[rgba(73,66,61,0.60)] transition-transform duration-300 ease-in-out"></iconify-icon>
+                            </div>
+                        </button>
+                        <div class="faq-content">
+                            <div class="px-5 pb-[18px] text-[#605A57] text-sm font-normal leading-6 font-sans">
+                                Yes! LabSync RI integrates seamlessly with popular intraoral scanners (iTero, Trios), milling software, and accounting platforms like QuickBooks. We support APIs for custom workflows.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Prelaunch Offer & CTA Section -->
+    <section id="offer" class="py-24 px-4 bg-[#111] text-white overflow-hidden relative">
+        <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-900/10 rounded-full blur-[100px] pointer-events-none"></div>
+        <div class="absolute bottom-0 left-0 w-[600px] h-[600px] bg-purple-900/10 rounded-full blur-[100px] pointer-events-none"></div>
+        
+        <div class="max-w-[1060px] mx-auto relative z-10 flex flex-col items-center">
+            
+            <!-- Pricing Panel -->
+            <div class="reveal-on-scroll w-full max-w-md bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-8 mb-16 relative overflow-hidden">
+                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-white/40 to-transparent"></div>
+                <div class="flex flex-col items-center text-center">
+                    <span class="text-xs font-semibold tracking-widest text-white/60 uppercase mb-4">Prelaunch Subscription</span>
+                    <div class="flex items-baseline gap-3 mb-6">
+                        <span class="text-lg text-white/40 line-through decoration-white/40">$300</span>
+                        <span class="text-5xl font-serif text-white">$150</span>
+                        <span class="text-sm text-white/60">/ month</span>
+                    </div>
+                    
+                    <div class="w-full space-y-3 mb-8 text-left pl-4">
+                        <div class="flex items-center gap-3">
+                            <iconify-icon icon="lucide:check" class="text-green-400" width="16"></iconify-icon>
+                            <span class="text-sm text-white/80">No extra fees</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <iconify-icon icon="lucide:check" class="text-green-400" width="16"></iconify-icon>
+                            <span class="text-sm text-white/80">No hidden costs</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <iconify-icon icon="lucide:check" class="text-green-400" width="16"></iconify-icon>
+                            <span class="text-sm text-white/80">Unlimited number of cases</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <iconify-icon icon="lucide:check" class="text-green-400" width="16"></iconify-icon>
+                            <span class="text-sm text-white/80">24/7 customer support</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Final CTA -->
+            <h2 class="reveal-on-scroll text-3xl md:text-5xl font-serif mb-8 text-center max-w-2xl text-balance leading-tight">
+                Transform your lab's workflow today and subscribe to our 50% prelaunch lifetime offer
+            </h2>
+            
+            <div class="reveal-on-scroll">
+                <a href="https://calendly.com" target="_blank" class="inline-flex items-center justify-center px-8 py-4 bg-white text-black rounded-full font-bold text-sm hover:bg-gray-100 hover:scale-105 transition-all duration-300 shadow-[0_0_20px_rgba(255,255,255,0.3)]">
+                    Book an onboarding session here
+                    <iconify-icon icon="lucide:calendar-clock" class="ml-2" width="16"></iconify-icon>
+                </a>
+            </div>
+            
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 border-t border-border bg-white text-sm">
+        <div class="max-w-[1060px] mx-auto px-4 flex flex-col md:flex-row justify-between items-start gap-8">
+            <div>
+                <div class="flex items-center gap-2 mb-4">
+                    <div class="w-6 h-6 bg-[#37322F] rounded flex items-center justify-center text-white">
+                        <iconify-icon icon="solar:tooth-linear" width="14"></iconify-icon>
+                    </div>
+                    <span class="font-bold text-primary">LabSync RI</span>
+                </div>
+                <p class="text-muted max-w-xs">The intelligent operating system for modern dental laboratories.</p>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-12">
+                <div class="flex flex-col gap-3">
+                    <h4 class="font-semibold text-primary">Product</h4>
+                    <a href="#features" class="text-muted hover:text-primary transition-colors">Features</a>
+                    <a href="#offer" class="text-muted hover:text-primary transition-colors">Pricing</a>
+                </div>
+                <div class="flex flex-col gap-3">
+                    <h4 class="font-semibold text-primary">Company</h4>
+                    <a href="#about" class="text-muted hover:text-primary transition-colors">About</a>
+                    <a href="#" class="text-muted hover:text-primary transition-colors">Contact</a>
+                </div>
+                <div class="flex flex-col gap-3">
+                    <h4 class="font-semibold text-primary">Legal</h4>
+                    <a href="#" class="text-muted hover:text-primary transition-colors">Privacy</a>
+                    <a href="#" class="text-muted hover:text-primary transition-colors">Terms</a>
+                </div>
+            </div>
+        </div>
+        <div class="max-w-[1060px] mx-auto px-4 mt-12 pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center text-xs text-muted">
+            <p>© 2024 LabSync RI. All rights reserved.</p>
+            <div class="flex gap-4 mt-4 md:mt-0">
+                <iconify-icon icon="lucide:twitter" class="hover:text-primary cursor-pointer"></iconify-icon>
+                <iconify-icon icon="lucide:linkedin" class="hover:text-primary cursor-pointer"></iconify-icon>
+                <iconify-icon icon="lucide:instagram" class="hover:text-primary cursor-pointer"></iconify-icon>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // --- DATA for Interactive Section ---
+        const DATA = [
+            {
+                category: "Client Experience",
+                description: "Streamline intake and reduce errors before production starts.",
+                items: [
+                    {
+                        id: "portal",
+                        title: "Client's Portal",
+                        description: "Dentists manage cases, upload files, and track status in real-time. Results in 75% fewer errors.",
+                        colorClass: "bg-blue-50 text-blue-900",
+                        accent: "bg-blue-500",
+                        icon: "users",
+                        image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80"
+                    },
+                    {
+                        id: "ordering",
+                        title: "Seamless Ordering",
+                        description: "Visual tooth mapping and smart defaults cut setup time by 80%. Intuitive for clinics.",
+                        colorClass: "bg-indigo-50 text-indigo-900",
+                        accent: "bg-indigo-500",
+                        icon: "shopping-cart",
+                        image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80"
+                    },
+                    {
+                        id: "upload",
+                        title: "Scan Upload Portal",
+                        description: "Forces validation before submission. The system rejects incomplete data or wrong file types.",
+                        colorClass: "bg-sky-50 text-sky-900",
+                        accent: "bg-sky-500",
+                        icon: "upload-cloud",
+                        image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=800&q=80"
+                    }
+                ]
+            },
+            {
+                category: "Lab Operations",
+                description: "Optimize workflow, track teams, and eliminate bottlenecks.",
+                items: [
+                    {
+                        id: "validation",
+                        title: "Intelligent Validation",
+                        description: "Files are categorized and verified automatically. No more mixing up CBCT scans with shade photos.",
+                        colorClass: "bg-emerald-50 text-emerald-900",
+                        accent: "bg-emerald-500",
+                        icon: "file-check",
+                        image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&q=80"
+                    },
+                    {
+                        id: "chat",
+                        title: "Contextual Case Chat",
+                        description: "Stop scrolling through mixed SMS threads. Every message is linked directly to the case ID.",
+                        colorClass: "bg-teal-50 text-teal-900",
+                        accent: "bg-teal-500",
+                        icon: "message-square",
+                        image: "https://images.unsplash.com/photo-1611746872915-64382b5c76da?w=800&q=80"
+                    },
+                    {
+                        id: "tracking",
+                        title: "Production Tracking",
+                        description: "Live performance analytics show you exactly who is working on what. Identify bottlenecks immediately.",
+                        colorClass: "bg-green-50 text-green-900",
+                        accent: "bg-green-500",
+                        icon: "activity",
+                        image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80"
+                    }
+                ]
+            },
+            {
+                category: "Business Intelligence",
+                description: "Stop profit leaks and maximize revenue with data.",
+                items: [
+                    {
+                        id: "inventory",
+                        title: "Inventory Control",
+                        description: "Track materials case by case. See exactly where profit leaks—no silent waste.",
+                        colorClass: "bg-orange-50 text-orange-900",
+                        accent: "bg-orange-500",
+                        icon: "package",
+                        image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&q=80"
+                    },
+                    {
+                        id: "reports",
+                        title: "Revenue Intelligence",
+                        description: "Understand why remakes happen. Metrics on productivity and efficiency.",
+                        colorClass: "bg-amber-50 text-amber-900",
+                        accent: "bg-amber-500",
+                        icon: "bar-chart-3",
+                        image: "https://images.unsplash.com/photo-1543286386-713bdd548da4?w=800&q=80"
+                    },
+                    {
+                        id: "billing",
+                        title: "Automated Billing",
+                        description: "Generate invoices instantly and track payment status. Reduce aged receivables by 50%.",
+                        colorClass: "bg-red-50 text-red-900",
+                        accent: "bg-red-500",
+                        icon: "receipt",
+                        image: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=800&q=80"
+                    }
+                ]
+            }
+        ];
+
+        // --- State ---
+        let state = {
+            categoryIdx: 0,
+            itemIdx: 0,
+            startTime: Date.now(),
+            paused: false,
+            duration: 5000 // 5 seconds per slide
+        };
+
+        // --- References ---
+        const tabsContainer = document.getElementById('category-tabs');
+        const featureListContainer = document.getElementById('feature-list');
+        const visualContainer = document.getElementById('visual-container');
+        const mainDisplay = document.getElementById('main-display');
+
+        // --- Render Functions ---
+        function renderTabs() {
+            tabsContainer.innerHTML = DATA.map((cat, idx) => {
+                const isActive = state.categoryIdx === idx;
+                const activeClasses = isActive 
+                    ? "bg-white border-border shadow-lg shadow-black/5 ring-1 ring-black/5" 
+                    : "bg-transparent border-transparent hover:bg-white/50 hover:border-border opacity-60 hover:opacity-100";
+                
+                const textClasses = isActive ? "text-[#37322F]" : "text-[#605A57]";
+                
+                return `
+                    <button onclick="setCategory(${idx})" 
+                        class="relative group flex flex-col items-start p-6 rounded-xl text-left transition-all duration-300 border ${activeClasses}">
+                        <span class="text-sm font-bold tracking-wide mb-2 transition-colors ${isActive ? "text-primary" : "text-muted/50"}">
+                            0${idx + 1}
+                        </span>
+                        <span class="text-lg font-semibold mb-2 ${textClasses}">
+                            ${cat.category}
+                        </span>
+                        <span class="text-sm leading-relaxed ${isActive ? "text-muted" : "text-muted/60"}">
+                            ${cat.description}
+                        </span>
+                        ${isActive ? '<div class="absolute bottom-0 left-6 right-6 h-[2px] bg-primary"></div>' : ''}
+                    </button>
+                `;
+            }).join('');
+        }
+
+        function renderFeatureList() {
+            const currentItems = DATA[state.categoryIdx].items;
+            
+            featureListContainer.innerHTML = currentItems.map((item, idx) => {
+                const isActive = state.itemIdx === idx;
+                
+                return `
+                    <button onclick="setItem(${idx})" 
+                        class="relative flex-1 p-8 text-left transition-colors duration-300 outline-none group ${isActive ? "bg-white" : "bg-[#fafafa] hover:bg-[#F7F5F3]"}">
+                        
+                        ${isActive ? `
+                            <div class="absolute top-0 left-0 w-full h-[3px] bg-gray-100 overflow-hidden">
+                                 <div id="progress-bar" class="h-full bg-primary w-0"></div>
+                            </div>
+                        ` : ''}
+
+                        <div class="flex flex-col gap-3 relative z-10">
+                            <h3 class="text-lg font-semibold font-serif transition-colors ${isActive ? "text-primary" : "text-muted"}">
+                                ${item.title}
+                            </h3>
+                            <p class="text-sm leading-relaxed transition-colors ${isActive ? "text-muted" : "text-muted/60"}">
+                                ${item.description}
+                            </p>
+                        </div>
+                        
+                        <div class="absolute left-0 top-0 bottom-0 w-1 transition-colors ${isActive ? "bg-primary" : "bg-transparent group-hover:bg-gray-200"}"></div>
+                    </button>
+                `;
+            }).join('');
+        }
+
+        function renderVisual() {
+            const item = DATA[state.categoryIdx].items[state.itemIdx];
+            
+            visualContainer.innerHTML = `
+                <div class="w-full h-full relative overflow-hidden fade-in">
+                    <!-- Main Screenshot Image -->
+                    <img src="${item.image}" 
+                         alt="${item.title}" 
+                         class="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+                         loading="lazy">
+                    
+                    <!-- Overlay Info Badge -->
+                    <div class="absolute bottom-6 left-6 right-6 bg-white/95 backdrop-blur-md rounded-xl p-4 shadow-2xl border border-white/50">
+                        <div class="flex items-start justify-between gap-4">
+                            <div class="flex-1">
+                                <div class="flex items-center gap-2 mb-2">
+                                    <div class="w-8 h-8 ${item.accent} bg-opacity-10 rounded-lg flex items-center justify-center">
+                                        <iconify-icon icon="lucide:${item.icon}" width="16" class="${item.accent.replace('bg-', 'text-')}"></iconify-icon>
+                                    </div>
+                                    <h4 class="text-base font-bold text-primary">${item.title}</h4>
+                                </div>
+                                <p class="text-xs text-muted leading-relaxed">${item.description}</p>
+                            </div>
+                            <div class="h-6 px-3 ${item.accent} rounded-full text-white text-[10px] font-bold tracking-wide flex items-center justify-center uppercase shadow-sm whitespace-nowrap">
+                                Live
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Corner Gradient -->
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent pointer-events-none"></div>
+                </div>
+            `;
+        }
+
+        function setCategory(idx) {
+            if (idx === state.categoryIdx) return;
+            state.categoryIdx = idx;
+            state.itemIdx = 0;
+            resetTimer();
+            renderTabs();
+            renderFeatureList();
+            renderVisual();
+        }
+
+        function setItem(idx) {
+            if (idx === state.itemIdx) return;
+            state.itemIdx = idx;
+            resetTimer();
+            renderFeatureList();
+            renderVisual();
+        }
+
+        function resetTimer() {
+            state.startTime = Date.now();
+            const progressBar = document.getElementById('progress-bar');
+            if (progressBar) progressBar.style.width = '0%';
+        }
+
+        function loop() {
+            if (!state.paused) {
+                const elapsed = Date.now() - state.startTime;
+                const progress = Math.min(elapsed / state.duration, 1);
+                
+                const progressBar = document.getElementById('progress-bar');
+                if (progressBar) {
+                    progressBar.style.width = `${progress * 100}%`;
+                }
+
+                if (progress >= 1) {
+                    advance();
+                }
+            }
+            requestAnimationFrame(loop);
+        }
+
+        function advance() {
+            const currentCategoryItems = DATA[state.categoryIdx].items;
+            if (state.itemIdx < currentCategoryItems.length - 1) {
+                state.itemIdx++;
+            } else {
+                state.categoryIdx = (state.categoryIdx + 1) % DATA.length;
+                state.itemIdx = 0;
+                renderTabs();
+            }
+            resetTimer();
+            renderFeatureList();
+            renderVisual();
+        }
+
+        // --- General Page Logic (Scroll Reveal & FAQ) ---
+        document.addEventListener('DOMContentLoaded', () => {
+            // Scroll Reveal Observer
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            const revealElements = document.querySelectorAll('.reveal-on-scroll');
+            revealElements.forEach(el => observer.observe(el));
+
+            // Init Interactive Section
+            // Interactions for pause on hover
+            if (mainDisplay) {
+                mainDisplay.addEventListener('mouseenter', () => state.paused = true);
+                mainDisplay.addEventListener('mouseleave', () => {
+                    state.paused = false;
+                    state.startTime = Date.now() - (state.duration * (parseFloat(document.getElementById('progress-bar')?.style.width || 0) / 100));
+                });
+            }
+
+            // Initial Render of Interactive Section
+            renderTabs();
+            renderFeatureList();
+            renderVisual();
+            
+            // Start Loop
+            loop();
+        });
+
+        // FAQ Toggle Logic
+        function toggleFaq(button) {
+            const content = button.nextElementSibling;
+            const icon = button.querySelector('.faq-icon');
+            const isExpanded = button.getAttribute('aria-expanded') === 'true';
+
+            button.setAttribute('aria-expanded', !isExpanded);
+            
+            if (!isExpanded) {
+                content.style.maxHeight = content.scrollHeight + "px";
+                content.style.opacity = "1";
+                icon.style.transform = "rotate(180deg)";
+            } else {
+                content.style.maxHeight = "0";
+                content.style.opacity = "0";
+                icon.style.transform = "rotate(0deg)";
+            }
+        }
+    </script>
+
+</body>
+</html>
